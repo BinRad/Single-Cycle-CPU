@@ -16,9 +16,13 @@ begin
 	case in_ALUctrl_RADE is
 		when "100" =>
 			case func_RADE is
-				when "100000" => ans <= "000";
-				when "100010" => ans <= "001";
-				when "100101" => ans <= "010";
+				when "100000" => ans <= "000"; --add
+				when "100010" => ans <= "001"; --sub
+				when "100100" => ans <= "011"; --and
+				when "100111" => ans <= "100"; --nor
+				when "100101" => ans <= "010"; --or
+				when "100110" => ans <= "101"; --xor
+				when "101010" => ans <= "111"; --stl
 				when others => ans <= "000";
 				end case;
 			when others => ans <= in_ALUctrl_RADE;

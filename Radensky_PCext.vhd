@@ -10,7 +10,8 @@ entity Radensky_PCext is
 end Radensky_PCext;
 architecture arch of Radensky_PCext is
 	begin
-		out_RADE(15 downto 0) 	<= in_RADE;
-		out_RADE(31 downto 16)	<= (others => '0') when (in_RADE(15) = '0') else
+		out_RADE(1 downto 0) <= "00"; 
+		out_RADE(17 downto 2) 	<= in_RADE;
+		out_RADE(31 downto 18)	<= (others => '0') when (in_RADE(15) = '0') else
 											(others => '1');
 end architecture;

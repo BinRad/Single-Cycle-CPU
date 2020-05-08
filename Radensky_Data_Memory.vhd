@@ -12,15 +12,15 @@ entity Radensky_Data_Memory is
   );
 end Radensky_Data_Memory;
 architecture arch of Radensky_Data_Memory is
-  type Data_RADE is array (0 to 127) of std_logic_vector(31 downto 0); --array of 32 32 bit vectors
+  type Data_RADE is array (0 to 31) of std_logic_vector(31 downto 0); --array of 32 32 bit vectors
   signal DATA_RADE_I : Data_RADE := (x"00000001", x"00000002", x"00000003", x"00000004",
   x"00000005", others => x"00000000");
 begin
   process(Clock_Data_RADE, Write_Enable_RADE)
   begin
     if rising_edge(Clock_Data_RADE) and Write_Enable_RADE = '1' then
-			DATA_RADE_I(to_integer(unsigned(Address_RADE))) <= Data_In_RADE;
+			DATA_RADE_I(to_integer(unsigned(Address_RADE(4 downto 0)))) <= Data_In_RADE;
 	  end if;
   end process;
-  Data_Out_RADE <= DATA_RADE_I(to_integer(unsigned(Address_RADE)));
+  Data_Out_RADE <= DATA_RADE_I(to_integer(unsigned(Address_RADE(4 downto 0))));
 end architecture;
