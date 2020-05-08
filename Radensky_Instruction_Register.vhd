@@ -10,7 +10,8 @@ entity Radensky_Instruction_Register is
 		RT_adr_RADE					: out std_logic_vector(4 downto 0);	
 		RD_adr_RADE				   : out std_logic_vector(4 downto 0);
 		shift_RADE          		: out std_logic_vector(4 downto 0);
-		function_RADE       		: out std_logic_vector(5 downto 0);		
+		function_RADE       		: out std_logic_vector(5 downto 0);
+		immed_RADE					: out std_logic_vector(15 downto 0);
 		clock_RADE			 	 	: in std_logic
 	);
 end Radensky_Instruction_Register;
@@ -28,6 +29,7 @@ architecture arch of Radensky_Instruction_Register is
 		RD_adr_RADE <= store_instruction(15 downto 11);
 		shift_RADE	<= store_instruction(10 downto 6);
 		function_RADE <= store_instruction(5 downto 0);
+		immed_RADE <= store_instruction(15 downto 0); 
 	end if;
-end process;
+	end process;
 end architecture;
