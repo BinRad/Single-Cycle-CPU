@@ -63,42 +63,15 @@ begin
 		PCSrc_RADE		<= '0';
 		ExtOp_RADE		<= '1';
 		ALUctrl_RADE	<= "000"; --add
-	-- elsif opcode_RADE = "000101" then ---Branch not Equal
-	-- 	RegDst_RADE
-	-- 	ALUsrc_RADE
-	-- 	MemtoReg_RADE
-	-- 	RegWrite_RADE
-	-- 	MemWrite_RADE
-	-- 	PCSrc_RADE
-	-- 	ExtOp_RADE
-	-- 	ALUop_RADE
 	elsif opcode_RADE = "001001" then --stl immediate x0a
-  RegDst_RADE		<= '0';
-  ALUsrc_RADE		<= '1';
-  MemtoReg_RADE	<= '0';
-  RegWrite_RADE	<= '1';
-  MemWrite_RADE	<= '0';
-  PCSrc_RADE		<= '0';
-  ExtOp_RADE		<= '1';
-  ALUctrl_RADE	<= "111"; --cmp
-	-- elsif opcode_RADE = "001010" then --stl unsigned imm x0b
-	-- 	RegDst_RADE
-	-- 	ALUsrc_RADE
-	-- 	MemtoReg_RADE
-	-- 	RegWrite_RADE
-	-- 	MemWrite_RADE
-	-- 	PCSrc_RADE
-	-- 	ExtOp_RADE
-	-- 	ALUop_RADE
-		-- elsif opcode_RADE = "001100" then --and imm x0c
-		-- RegDst_RADE
-		-- ALUsrc_RADE
-		-- MemtoReg_RADE
-		-- RegWrite_RADE
-		-- MemWrite_RADE
-		-- PCSrc_RADE
-		-- ExtOp_RADE
-		-- ALUctrl_RADE	<= '
+	  RegDst_RADE		<= '0';
+	  ALUsrc_RADE		<= '1';
+	  MemtoReg_RADE	<= '0';
+	  RegWrite_RADE	<= '1';
+	  MemWrite_RADE	<= '0';
+	  PCSrc_RADE		<= '0';
+	  ExtOp_RADE		<= '1';
+	  ALUctrl_RADE	<= "111"; --cmp
 	end if;
  end process;
 end architecture;

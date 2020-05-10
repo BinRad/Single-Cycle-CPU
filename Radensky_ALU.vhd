@@ -33,6 +33,4 @@ end process;
 ALU_out_RADE <= answer;
 zero_RADE	<= '1' when (answer = "0") else
 					'0';
-
-
 end architecture;

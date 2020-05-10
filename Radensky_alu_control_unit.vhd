@@ -27,18 +27,6 @@ begin
 				end case;
 			when others => ans <= in_ALUctrl_RADE;
 			end case;
-
-	-- if in_ALUctrl_RADE = "100" then --then its an R type, use func
-	-- 	if func_RADE = "100000" then
-	-- 		out_ALUctr_RADE <= "000"; --add
-	-- 	elsif func_RADE <= "100010" then
-	-- 		out_ALUctr_RADE <= "001"; --sub
-	-- 	elsif func_RADE = "100101" then  --OR
-	-- 		out_ALUctr_RADE <= "010";
-	-- 	end if;
-	-- else
-	-- 	out_ALUctr_RADE <= in_ALUctrl_RADE;
-	-- 	end if;
 end process;
 	out_ALUctr_RADE <= ans;
 end architecture;
