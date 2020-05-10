@@ -23,7 +23,7 @@ add $s0, $t0, $t1
 sw $s0, 5
 start:
 #NEW STUFF
-lw $t1,5  #15 in t1
+li $t1,5  #15 in t1
 ori $s0, $t1, 33
 beq $s0, $t1, skip
 and $t0,$s0,$t1
