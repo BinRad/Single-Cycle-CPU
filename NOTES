@@ -1,0 +1,96 @@
+RegDst_RADE
+ALUsrc_RADE
+MemtoReg_RADE	
+RegWrite_RADE
+MemWrite_RADE
+PCSrc_RADE
+Jump_RADE	
+ExtOp_RADE
+ALUctrl_RADE	<= '
+
+
+
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.std_logic_signed.all;
+
+entity Radensky_ALU is
+  port(
+		busA_RADE					: in std_logic_vector(31 downto 0);
+		busB_RADE					: in std_logic_vector(31 downto 0);
+		ALUctr_RADE					: in std_logic_vector(31 downto 0);
+		ALU_out_RADE				: out std_logic_vector(31 downto 0);
+		zero_RADE					: out std_logic
+	);
+end Radensky_ALU;
+architecture arch of Radensky_ALU is
+begin
+process(busA_RADE, busB_RADE, ALUctr_RADE)
+begin
+	if ALUctr_RADE = "000" then --add
+		ALU_out_RADE <= busA_RADE + busB_RADE;
+		if (busA_RADE + busB_RADE) = "0" then
+			
+	elsif ALUctr_RADE = "001" then --sub
+		ALU_out_RADE <= busA_RADE - busB_RADE;
+	elsif ALUctr_RADE = "010" then --or
+		ALU_out_RADE <= busA_RADE or busB_RADE;
+	end if;
+end process;
+end architecture;
+
+
+
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.std_logic_signed.all;
+entity Radensky_ALU is
+  port(
+		busA_RADE					: in std_logic_vector(31 downto 0);
+		busB_RADE					: in std_logic_vector(31 downto 0);
+		ALUctr_RADE					: in std_logic_vector(31 downto 0);
+		ALU_out_RADE				: inout std_logic_vector(31 downto 0);
+		zero_RADE					: out std_logic
+	);
+end Radensky_ALU;
+architecture arch of Radensky_ALU is
+signal temp : std_logic_vector(31 downto 0);
+begin
+temp	<= 		(busA_RADE + busB_RADE) when (ALUctr_RADE = "000") else
+					(busA_RADE - busB_RADE) when (ALUctr_RADE = "001") else
+					(busA_RADE or busB_RADE) when (ALUctr_RADE = "010");
+ALU_out_RADE <= temp;
+zero_RADE	<= '1' when (temp = (others => '0')) else
+					'0';
+
+
+end architecture;
+
+
+library ieee;
+use ieee.std_logic_1164.all;
+
+entity Radensky_alu_control_unit is
+  port(
+	  func_RADE         			: in std_logic_vector(5 downto 0);
+	  in_ALUctrl_RADE				: in std_logic_vector(2 downto 0);
+	  out_ALUctr_RADE				: out std_logic_vector(2 downto 0)
+	);
+end Radensky_alu_control_unit;
+architecture arch of Radensky_alu_control_unit is
+begin
+process(func_RADE, in_ALUctrl_RADE)
+begin
+	if in_ALUctrl_RADE = "100" then --then its an R type, use func
+		if func_RADE = "100000" then
+			out_ALUctr_RADE <= "000"; --add
+		elsif func_RADE <= "100010" then
+			out_ALUctr_RADE <= "001"; --sub
+		elsif func_RADE = "100101" then  --OR
+			out_ALUctr_RADE <= "010";
+		end if;
+	else
+		out_ALUctr_RADE <= in_ALUctrl_RADE;
+		end if;
+end process;
+end architecture;

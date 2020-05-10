@@ -14,7 +14,7 @@
 
 -- PROGRAM		"Quartus II 64-Bit"
 -- VERSION		"Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition"
--- CREATED		"Sun May 10 11:15:01 2020"
+-- CREATED		"Sun May 10 12:43:10 2020"
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.all; 
@@ -26,7 +26,6 @@ ENTITY Radensky_Single_Cycle_CPU IS
 	(
 		clock :  IN  STD_LOGIC;
 		Signed :  IN  STD_LOGIC;
-		Radensky_RBin :  IN  STD_LOGIC;
 		Radensky_RBout :  OUT  STD_LOGIC;
 		a1 :  OUT  STD_LOGIC;
 		a2 :  OUT  STD_LOGIC;
@@ -81,7 +80,7 @@ END COMPONENT;
 
 COMPONENT radensky_adder
 	PORT(a_add_RADE : IN STD_LOGIC_VECTOR(31 DOWNTO 0) := x"00000004";
-		 b_add_RADE : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+		 b_add_RADE : IN STD_LOGIC_VECTOR(31 DOWNTO 0):= x"00000000";
 		 out_RADE : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
 	);
 END COMPONENT;
@@ -137,7 +136,7 @@ COMPONENT withcompl
 		 b5 : IN STD_LOGIC;
 		 b6 : IN STD_LOGIC;
 		 b7 : IN STD_LOGIC;
-		 Radensky_RBin : IN STD_LOGIC;
+		 Radensky_RBin : IN STD_LOGIC := '0';
 		 Radensky_RBout : OUT STD_LOGIC;
 		 a1 : OUT STD_LOGIC;
 		 a2 : OUT STD_LOGIC;
@@ -324,7 +323,6 @@ PORT MAP(Signed => Signed,
 		 b5 => out_RADE(5),
 		 b6 => out_RADE(6),
 		 b7 => out_RADE(7),
-		 Radensky_RBin => Radensky_RBin,
 		 Radensky_RBout => Radensky_RBout,
 		 a1 => a1,
 		 a2 => a2,
