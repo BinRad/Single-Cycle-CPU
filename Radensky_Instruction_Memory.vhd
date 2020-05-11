@@ -4,7 +4,7 @@ use ieee.numeric_std.all;
 
 entity Radensky_Instruction_Memory is
   port(
-	  Address_RADE                  			: in std_logic_vector(31 downto 0);
+	  Address_RADE                  			: in std_logic_vector(31 downto 0):= x"00000000";
 	  Instruction_Out_RADE                 : out std_logic_vector(31 downto 0)
   );
 end Radensky_Instruction_Memory;

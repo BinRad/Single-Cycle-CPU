@@ -4,8 +4,8 @@ use ieee.numeric_std.all;
 
 entity Radensky_PCext is
 	port(
-		in_RADE			: in std_logic_vector (15 downto 0);
-		out_RADE			: out std_logic_vector(31 downto 0)
+		in_RADE			: in std_logic_vector (15 downto 0) := x"0000";
+		out_RADE			: out std_logic_vector(31 downto 0) := x"00000000"
 	);
 end Radensky_PCext;
 architecture arch of Radensky_PCext is

@@ -22,7 +22,8 @@ begin
 				when "100111" => ans <= "100"; --nor
 				when "100101" => ans <= "010"; --or
 				when "100110" => ans <= "101"; --xor
-				when "101010" => ans <= "111"; --stl
+				when "011000" => ans <= "110"; --mul
+				when "011010" => ans <= "111"; --div
 				when others => ans <= "000";
 				end case;
 			when others => ans <= in_ALUctrl_RADE;
