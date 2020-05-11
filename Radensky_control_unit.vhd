@@ -18,7 +18,7 @@ architecture arch of Radensky_control_unit is
 begin
 process(opcode_RADE)
 begin
-	if opcode_RADE = "000000" then
+	if opcode_RADE = "000000" then --R type
 		RegDst_RADE 	<= '1';
 		ALUsrc_RADE 	<= '0';
 		MemtoReg_RADE 	<= '0';
@@ -63,15 +63,6 @@ begin
 		PCSrc_RADE		<= '0';
 		ExtOp_RADE		<= '1';
 		ALUctrl_RADE	<= "000"; --add
-	elsif opcode_RADE = "001001" then --stl immediate x0a
-	  RegDst_RADE		<= '0';
-	  ALUsrc_RADE		<= '1';
-	  MemtoReg_RADE	<= '0';
-	  RegWrite_RADE	<= '1';
-	  MemWrite_RADE	<= '0';
-	  PCSrc_RADE		<= '0';
-	  ExtOp_RADE		<= '1';
-	  ALUctrl_RADE	<= "111"; --cmp
 	end if;
  end process;
 end architecture;

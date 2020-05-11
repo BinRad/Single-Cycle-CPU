@@ -1,6 +1,7 @@
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.std_logic_signed.all;
+use ieee.NUMERIC_STD.all;
 entity Radensky_ALU is
   port(
 		busA_RADE					: in std_logic_vector(31 downto 0);
@@ -22,11 +23,8 @@ case ALUctr_RADE is
 	when "011" => answer <= busA_RADE and busB_RADE;
 	when "100" => answer <= busA_RADE NOR busB_RADE;
 	when "101" => answer <= busA_RADE XOR busB_RADE;
-	when "111" =>  if (busA_RADE < busB_RADE) then
-			answer <= x"00000001";
-			else
-				answer <= x"00000000";
-				end if;
+	when "110" => answer <= std_logic_vector(to_signed((to_integer(signed(busA_RADE)) * to_integer(signed(busB_RADE))),32));
+	when "111" => answer <= std_logic_vector(to_signed((to_integer(signed(busA_RADE)) / to_integer(signed(busB_RADE))),32));
 	when others => answer <= (others => '0');
 	end case;
 end process;

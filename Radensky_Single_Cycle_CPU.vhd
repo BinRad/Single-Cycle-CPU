@@ -251,8 +251,6 @@ SIGNAL	SYNTHESIZED_WIRE_34 :  STD_LOGIC_VECTOR(31 DOWNTO 0);
 BEGIN 
 out1_RADE <= SYNTHESIZED_WIRE_40;
 
-
-
 b2v_inst : radensky_alu
 PORT MAP(ALUctr_RADE => SYNTHESIZED_WIRE_0,
 		 busA_RADE => SYNTHESIZED_WIRE_1,
@@ -260,24 +258,20 @@ PORT MAP(ALUctr_RADE => SYNTHESIZED_WIRE_0,
 		 zero_RADE => SYNTHESIZED_WIRE_21,
 		 ALU_out_RADE => SYNTHESIZED_WIRE_36);
 
-
 b2v_inst1 : radensky_two_mux_one
 PORT MAP(sel_RADE => SYNTHESIZED_WIRE_3,
 		 a_RADE => SYNTHESIZED_WIRE_36,
 		 b_RADE => SYNTHESIZED_WIRE_5,
 		 out_RADE => out_RADE);
 
-
 b2v_inst10 : radensky_adder
 PORT MAP(a_add_RADE => SYNTHESIZED_WIRE_37,
 		 b_add_RADE => SYNTHESIZED_WIRE_7,
 		 out_RADE => SYNTHESIZED_WIRE_34);
 
-
 b2v_inst11 : radensky_pcext
 PORT MAP(in_RADE => SYNTHESIZED_WIRE_38,
 		 out_RADE => SYNTHESIZED_WIRE_7);
-
 
 b2v_inst12 : radensky_register_file
 PORT MAP(Write_Enable_RADE => SYNTHESIZED_WIRE_9,
@@ -297,11 +291,9 @@ PORT MAP(Write_Enable_RADE => SYNTHESIZED_WIRE_13,
 		 Data_In_RADE => SYNTHESIZED_WIRE_40,
 		 Data_Out_RADE => SYNTHESIZED_WIRE_5);
 
-
 b2v_inst14 : radensky_instruction_memory
 PORT MAP(Address_RADE => SYNTHESIZED_WIRE_41,
 		 Instruction_Out_RADE => SYNTHESIZED_WIRE_25);
-
 
 b2v_inst15 : radensky_regdst_mux
 PORT MAP(sel_RADE => SYNTHESIZED_WIRE_17,
@@ -309,9 +301,7 @@ PORT MAP(sel_RADE => SYNTHESIZED_WIRE_17,
 		 b_RADE => SYNTHESIZED_WIRE_19,
 		 out_RADE => SYNTHESIZED_WIRE_10);
 
-
 SYNTHESIZED_WIRE_32 <= SYNTHESIZED_WIRE_20 AND SYNTHESIZED_WIRE_21;
-
 
 b2v_inst17 : withcompl
 PORT MAP(Signed => Signed,
